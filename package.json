@@ -1,0 +1,44 @@
+{
+  "name": "jenerated",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generated",
+  "license": "MIT",
+  "scripts": {
+    "publishPackages": "ts-node -T ./src/publish.ts",
+    "release": "standard-version -a && git push --follow-tags origin master"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{css,less,scss,sass,html,htm,vue,yml,yaml,json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "execa": "^4.0.0",
+    "shx": "^0.3.2",
+    "tempy": "^0.5.0",
+    "vtils": "^2.58.0"
+  },
+  "devDependencies": {
+    "codecov": "^3",
+    "eslint": "^6",
+    "haoma": "^1.12.4",
+    "husky": "^4",
+    "jest": "^25",
+    "lint-staged": "^10",
+    "prettier": "^2",
+    "standard-version": "^7.1.0",
+    "ts-node": "^8.9.1",
+    "type-fest": "^0.13.1",
+    "typescript": "^3"
+  }
+}

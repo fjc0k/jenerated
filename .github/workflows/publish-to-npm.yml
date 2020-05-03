@@ -1,0 +1,23 @@
+name: Publish to NPM
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: 'https://registry.npmjs.org'
+      - run: |
+          npx pnpm i
+          npm run publishPackages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
